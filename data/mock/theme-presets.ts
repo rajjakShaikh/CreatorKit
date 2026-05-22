@@ -2,6 +2,19 @@ import type { ThemePreset } from "@/types";
 
 export const themePresets: ThemePreset[] = [
   {
+    id: "link",
+    name: "Link",
+    description: "Linktree-ready vibrant green",
+    colors: {
+      primary: "oklch(0.50 0.22 145)",
+      accent: "oklch(0.65 0.18 165)",
+      background: "oklch(0.97 0.015 145)",
+      foreground: "oklch(0.18 0.03 145)",
+    },
+    fontFamily: "sans",
+    radius: "lg",
+  },
+  {
     id: "minimal",
     name: "Minimal",
     description: "Clean Notion-inspired neutrals",
@@ -40,17 +53,5 @@ export const themePresets: ThemePreset[] = [
     fontFamily: "serif",
     radius: "lg",
   },
-  {
-    id: "link",
-    name: "Link",
-    description: "Linktree-ready vibrant accents",
-    colors: {
-      primary: "oklch(0.52 0.2 145)",
-      accent: "oklch(0.68 0.15 200)",
-      background: "oklch(0.97 0.01 145)",
-      foreground: "oklch(0.2 0.02 145)",
-    },
-    fontFamily: "sans",
-    radius: "lg",
-  },
 ];
+

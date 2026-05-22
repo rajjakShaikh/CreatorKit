@@ -17,7 +17,7 @@ export const useThemeStore = create<ThemeState>()(
   persist(
     (set, get) => ({
       mode: "system",
-      activePresetId: themePresets[0].id,
+      activePresetId: "link",
       customAccent: null,
       setMode: (mode) => set({ mode }),
       setPreset: (activePresetId) => set({ activePresetId }),
@@ -29,6 +29,6 @@ export const useThemeStore = create<ThemeState>()(
         );
       },
     }),
-    { name: "creatorkit-theme" }
+    { name: "creatorkit-theme-v2" }
   )
 );

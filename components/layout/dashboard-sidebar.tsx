@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PanelLeftClose, PanelLeft } from "lucide-react";
@@ -11,8 +12,30 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useUIStore } from "@/stores/ui-store";
 import { useCreatorStore } from "@/stores/creator-store";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { motion } from "framer-motion";
+
+function SidebarAvatar({ src, name }: { src?: string; name: string }) {
+  const [imgError, setImgError] = useState(false);
+  const initials = name.slice(0, 2).toUpperCase();
+
+  if (!src || imgError) {
+    return (
+      <div className="size-9 rounded-full border border-border/60 shadow-2xs flex items-center justify-center text-xs font-extrabold text-white shrink-0" style={{ background: "linear-gradient(135deg, #7c3aed, #4f46e5)" }}>
+        {initials}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      onError={() => setImgError(true)}
+      className="size-9 rounded-full border border-border/60 shadow-2xs object-cover shrink-0"
+    />
+  );
+}
 
 export function DashboardSidebar() {
   const pathname = usePathname();
@@ -104,12 +127,10 @@ export function DashboardSidebar() {
           )}
         >
           <div className="relative shrink-0">
-            <Avatar className="size-9 border border-border/60 shadow-2xs">
-              <AvatarImage src={creator.avatarUrl} alt={creator.displayName} />
-              <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">
-                {creator.displayName.slice(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <SidebarAvatar
+              src={creator.avatarUrl}
+              name={creator.displayName}
+            />
             <span className="absolute bottom-0 right-0 size-2.5 rounded-full bg-emerald-500 border-2 border-background animate-pulse" />
           </div>
           {!sidebarCollapsed && (
