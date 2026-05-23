@@ -101,3 +101,5 @@ All buttons, icon toggles, modal dialogs, and navigation points have:
    ```bash
    npm start
    ```
+<img src="/my-app/app/screenshots/Screenshot 2026-05-22 231037.png" width="100%" />
+
