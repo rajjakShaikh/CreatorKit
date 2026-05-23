@@ -7,12 +7,15 @@
 ## Screenshots
 
 ### Creator Dashboard
+![Creator Dashboard](./public/screenshots/1.png)
+
 ![Creator Dashboard](./public/screenshots/dash-1.png)
 ![Creator Dashboard](./public/screenshots/dash-2.png)
 
 ### Media Kit Builder
 <!-- ![Media Kit Builder](./public/screenshots/media-kit-builder.png) -->
 ![Media Kit Builder](./public/screenshots/media_kit_1.png)
+![Media Kit Builder](./public/screenshots/media_kit_2.png)
 )
 
 ### Analytics & Insights
@@ -23,6 +26,8 @@
 
 ### Public Creator Profile
 ![Public Profile](./public/screenshots/public-profile.png)
+
+
 
 ---
 
