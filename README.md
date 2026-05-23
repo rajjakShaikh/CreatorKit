@@ -1,105 +1,171 @@
-# Creator Platform — Media Kit Builder, Analytics Bento & Deal Pipeline
+# CreatorKit — Media Kit Builder, Analytics & Brand Deal Platform
 
-A premium, production-ready SaaS platform built for creators to design customizable Media Kits (Canva + Notion-style block editor), analyze social and campaign performance via responsive bento-grids, and manage brand deals via a drag-and-drop Kanban workflow.
+> A premium, production-ready creator workspace built with **Next.js 15 App Router**, **TypeScript**, **Tailwind CSS v4**, **Zustand**, **Framer Motion**, **dnd-kit**, and **Recharts**.
 
 ---
 
-## 🚀 Key Product Pillars
+## Screenshots
+
+### Creator Dashboard
+![Creator Dashboard](./public/screenshots/dashboard.png)
+
+### Media Kit Builder
+![Media Kit Builder](./public/screenshots/media-kit-builder.png)
+
+### Analytics & Insights
+![Analytics Dashboard](./public/screenshots/analytics.png)
+
+### Brand Deal Pipeline
+![Brand Deals Kanban](./public/screenshots/brand-deals.png)
+
+### Public Creator Profile
+![Public Profile](./public/screenshots/public-profile.png)
+
+---
+
+## Key Product Pillars
 
 ### 1. Canvas-Style Media Kit Builder
-* **Dynamic Canvas Layout**: Add, remove, toggle, reorder, and configure media kit sections with instant drag-and-drop interactivity.
-* **Granular Editors**: Edit bio/avatar files, audience demographics, social handles, packages, testimonials, and past collaborations.
-* **Device Mockup Preview**: Live mobile simulator mockup side-by-side with the editor, alongside a full-screen responsive desktop preview toggle.
-* **Theme Styling Engine**: Instantly switch profiles between cohesive themes (`Minimal`, `Studio`, `Bloom`, `Link`) and customized theme presets.
+- **Dynamic Canvas Layout**: Add, remove, toggle, reorder, and configure media kit sections with instant drag-and-drop interactivity powered by `@dnd-kit`.
+- **Granular Block Editors**: Edit bio/avatar, audience demographics, social handles, pricing packages, testimonials, and past collaborations.
+- **Device Mockup Preview**: Live mobile simulator side-by-side with the editor, plus full-screen responsive desktop preview toggle.
+- **Theme Styling Engine**: Instantly switch between cohesive themes (`Link`, `Minimal`, `Studio`, `Bloom`) with live profile preview updates.
 
 ### 2. High-Fidelity Creator Analytics
-* **Interactive Data Visualization**: Tailored chart wrappers built with Recharts, optimized for zero-delay size adjustments and clean SVG scaling.
-* **Comprehensive Metrics**: Track follower growth trends, engagement rates, audience geography distribution, social platform breakdowns, and campaign conversion rates.
-* **Hydration Protection**: Implements custom client-side mounting guards (`useMounted`) to eliminate server-side layout dimension mismatch warnings.
+- **Interactive Data Visualization**: Tailored chart wrappers built with Recharts — follower growth area chart, platform donut chart, demographics bar chart, and campaign funnel.
+- **Comprehensive Metrics**: Follower growth trends, engagement rates, audience geography, platform distribution, and campaign conversion.
+- **Date Range Filtering**: Switch between 7-day, 30-day, and 90-day views with smooth skeleton loading transitions.
 
-### 3. Drag-and-Drop Deal pipeline (Kanban)
-* **Visual Deal Tracking**: Transition deals between phases (`Inquiry`, `Negotiation`, `Active`, `Completed`) via `@dnd-kit/core` drag and drop.
-* **Interactive Details Drawer**: Review terms, modify campaign budgets and deadlines, manage a deliverables checklist, and converse inside the Brand Discussion Hub.
-* **KPI Metrics Dashboard**: View pipeline values, completed earnings, and average deal sizes at a glance.
+### 3. Brand Deal Pipeline (Kanban)
+- **Visual Deal Tracking**: Drag deals between `Inquiry → Negotiation → Active → Completed` via `@dnd-kit/core`.
+- **Deal Details Drawer**: Review campaign terms, budgets, deadlines, a deliverables checklist, and a brand discussion message feed.
+- **KPI Metrics**: Pipeline value, completed earnings, and average deal size at a glance.
+
+### 4. Public Creator Profile
+- **Hero Section** with banner, avatar, verified badge, niche tags, and location.
+- **Analytics Highlights Bar**: Total reach, engagement rate, avg views, completed deals.
+- **Social Platforms Row**: Platform cards with follower counts and external links.
+- **Featured Content Gallery**: Top-performing content cards with views/engagement metrics.
+- **Collaboration CTA**: Email inquiry button + media kit PDF download CTA.
+
+### 5. Theme & Branding Customization
+- Dark / Light / System mode toggle
+- 4 curated theme presets with color swatch preview
+- Custom accent color picker (hex + color wheel)
+- Typography preset selector (Sans, Serif, Display)
+- Corner radius selector (Sharp, Rounded, Pill)
+- Avatar & Banner image upload with live preview
 
 ---
 
-## 🛠️ Technology Stack & Architecture
+## 🛠️ Technology Stack
 
-This project is built using modern frontend engineering standards:
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) + React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 + custom design tokens |
+| State | Zustand with `persist` middleware |
+| Animations | Framer Motion |
+| Drag & Drop | `@dnd-kit/core` + `@dnd-kit/sortable` |
+| Charts | Recharts |
+| UI Primitives | Base UI + Radix UI via Shadcn |
 
-* **Core Framework**: Next.js (App Router) & React 19
-* **Styling**: Tailwind CSS v4 with HSL design tokens & custom theme variables
-* **Drag-and-Drop**: `@dnd-kit/core` and `@dnd-kit/utilities`
-* **State Management**: Zustand with persistent storage middleware
-* **Motion & Animations**: Framer Motion for micro-interactions, layout transitions, and page load entry animations
-* **UI Components**: Base UI and Radix primitives styled with vanilla Tailwind CSS
+---
 
-### Feature-Based Folder Architecture
+## Project Architecture
+
+Feature-isolated, domain-driven folder structure:
 
 ```text
 my-app/
-├── app/                  # Next.js App Router (Dashboard Pages & Public Profile routes)
-│   ├── (dashboard)/      # Authenticated dashboard workspace
-│   └── (public)/         # SEO-optimized public creator profiles
-├── components/           # Core layout headers, sidebars, and reusable UI primitives
-│   ├── layout/           # Global sidebar and header layouts
-│   ├── shared/           # Logo, icons, loading components
-│   └── ui/               # Reusable primitives (Buttons, Inputs, Badges, etc.)
-├── features/             # Feature-isolated domains (state, components, hooks)
-│   ├── analytics/        # Recharts analytics visualizations & bento metrics
-│   ├── deals/            # Kanban board engine, lists, add/details drawers
-│   ├── media-kit/        # Builder canvas, block registry, theme style engine
-│   └── profile/          # Published public profile pages
-├── stores/               # Global Zustand state containers
-└── hooks/                # Client utility hooks (e.g. useMounted)
+├── app/
+│   ├── (dashboard)/          # Dashboard workspace routes
+│   │   ├── dashboard/        # Overview page
+│   │   ├── media-kit/        # Kit index + /builder
+│   │   ├── deals/            # Brand deals kanban
+│   │   ├── analytics/        # Analytics visualizations
+│   │   └── settings/theme/   # Theme & branding settings
+│   └── (public)/
+│       └── [username]/       # Public creator profile page
+├── components/
+│   ├── layout/               # Sidebar, Header, Shell
+│   ├── shared/               # Logo, PageHeader, EmptyState
+│   └── ui/                   # Button, Card, Badge, Input…
+├── features/                 # Feature-isolated domains
+│   ├── analytics/            # Charts, KPIs, skeleton
+│   ├── dashboard/            # Widgets, charts, hooks
+│   ├── deals/                # Kanban, modals, store
+│   ├── media-kit/            # Builder, blocks, store, preview
+│   ├── profile/              # Public profile view
+│   └── theme/                # Theme settings page
+├── stores/                   # Global Zustand stores
+├── data/mock/                # Static mock data
+├── hooks/                    # Shared utility hooks
+├── lib/                      # Utils, constants, animations
+└── types/                    # Shared TypeScript types
 ```
 
 ---
 
-## ⚡ Technical Decisions & Optimizations
+## Technical Decisions
 
-### 1. Zero-Jank SSR Hydration for SVG Charts
-Recharts standard `ResponsiveContainer` runs calculation routines on `window` and `document` properties. When evaluated on the server side, Next.js generates hydration mismatches and console dimension errors (`width -1`). We resolved this by implementing client-side mounting checks (`useMounted` hook) that defer chart initialization until the client browser is fully interactive.
+### 1. SSR Hydration Safety for Recharts
+`ResponsiveContainer` reads `window` dimensions which don't exist on the server. We implement a `useMounted` hook that defers all chart renders until the client is fully interactive, eliminating hydration mismatch warnings.
 
-### 2. Responsive Multi-Layout Kanban Board
-Standard desktop grids force Kanban columns to shrink below readability thresholds on mobile devices. We implemented a hybrid viewport responsive design:
-* **Mobile & Tablet**: Columns layout as a horizontal scrolling strip (swipe-to-view), ensuring each column maintains a readable width (`285px` - `320px`).
-* **Desktop**: Automatically snaps into a 4-column viewport grid.
+### 2. Draft vs. Published State Isolation
+The media kit builder maintains a **draft state** (live editor changes) completely separate from **published state** (what the public profile reads). Brands visiting `/alex-chen` always see the last published snapshot — never in-progress edits.
 
-### 3. State Serialization & Draft Isolation
-We separate the active editor state (allowing draft changes to persist locally in Zustand) from the published public state. The public profile page is hydrated strictly from the published JSON snapshot (`publishedBlocks`, `publishedPresetId`), ensuring that incomplete edits in the builder do not impact active public traffic.
+### 3. Unified Sidebar Layout
+All dashboard pages share a single `h-screen overflow-hidden` shell, ensuring the sidebar is always viewport-constrained with a sticky bottom profile section — consistent across every route.
 
-### 4. Semantic Accessibility (a11y)
-All buttons, icon toggles, modal dialogs, and navigation points have:
-* High-contrast focus outlines for tab-based keyboard navigation.
-* Dynamic screen-reader tags (`aria-label`, `aria-expanded`, `aria-current`).
-* Custom keyboard-accessible checklists (accessible roles and spaces/enters triggers for deliverable items).
+### 4. Responsive Kanban
+- **Mobile/Tablet**: Horizontal scrolling strip (`285–320px` column width)
+- **Desktop**: Auto-snap 4-column viewport grid
+
+### 5. Accessibility (a11y)
+- `aria-label`, `aria-expanded`, `aria-current` on all interactive elements
+- Keyboard-navigable checklists and modals
+- High-contrast focus rings for tab navigation
 
 ---
 
-## 💻 Getting Started
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm or pnpm
 
 ### Installation
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+# 1. Install dependencies
+npm install
 
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
+# 2. Start development server
+npm run dev
+```
 
-3. Build for production:
-   ```bash
-   npm run build
-   ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-4. Start production server:
-   ```bash
-   npm start
-   ```
-<img src="/my-app/app/screenshots/Screenshot 2026-05-22 231037.png" width="100%" />
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+### Routes
+
+| Route | Description |
+|---|---|
+| `/` | Marketing landing page |
+| `/dashboard` | Creator workspace overview |
+| `/media-kit` | Media kit index + stats |
+| `/media-kit/builder` | Drag-and-drop kit builder |
+| `/deals` | Brand deal kanban pipeline |
+| `/analytics` | Analytics visualizations |
+| `/settings/theme` | Theme & branding settings |
+| `/alex-chen` | Example public creator profile |
 
