@@ -14,8 +14,9 @@
 
 ### Media Kit Builder
 <!-- ![Media Kit Builder](./public/screenshots/media-kit-builder.png) -->
-![Media Kit Builder](./public/screenshots/media_kit_1.png)
-![Media Kit Builder](./public/screenshots/media_kit_2.png)
+![Media Kit Builder](./public/screenshots/media-kit-1.png)
+![Media Kit Builder](./public/screenshots/media-kit-2.png)
+
 )
 
 ### Analytics & Insights
