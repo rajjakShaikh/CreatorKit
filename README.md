@@ -14,19 +14,22 @@
 
 ### Media Kit Builder
 <!-- ![Media Kit Builder](./public/screenshots/media-kit-builder.png) -->
-![Media Kit Builder](./public/screenshots/media-kit-1.png)
+![Media Kit Builder](./public/screenshots/media_kit_1.png)
 ![Media Kit Builder](./public/screenshots/media-kit-2.png)
 
-)
 
 ### Analytics & Insights
 ![Analytics Dashboard](./public/screenshots/analytics.png)
 
 ### Brand Deal Pipeline
-![Brand Deals Kanban](./public/screenshots/brand-deals.png)
+![Brand Deals Kanban](./public/screenshots/brand1.png)
+![Brand Deals Kanban](./public/screenshots/brand2.png)
 
 ### Public Creator Profile
-![Public Profile](./public/screenshots/public-profile.png)
+<!-- ![Public Profile](./public/screenshots/public-profile.png) -->
+![Public Profile](./public/screenshots/profile2.png)
+![Public Profile](./public/screenshots/profile-1.png)
+
 
 
 
